@@ -1,0 +1,43 @@
+<div class="jumbotron bg-secondary">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ userInfo.firstName }}</td>
+      <td>{{ userInfo.lastName }}</td>
+      <td>{{ userInfo.userName }}</td>
+      <td>{{ userInfo.email }}</td>
+      <td>{{ userInfo.phone }}</td>
+      <td>
+        <button
+          class="btn btn-outline-dark"
+          (click)="edit = !edit"
+        >
+          Update
+        </button>
+
+        <button
+          class="btn btn-outline-success"
+          *ngIf="edit"
+        >
+          Save changes
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-outline-dark">
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

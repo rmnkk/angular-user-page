@@ -1,0 +1,15 @@
+<button
+  class="btn btn-outline-danger"
+  routerLink="/login"
+  *ngIf="!logged"
+>
+  Please login
+</button>
+
+<button
+  class="btn btn-outline-danger"
+  *ngIf="logged"
+  (click)="logout()"
+>
+  Logout
+</button>

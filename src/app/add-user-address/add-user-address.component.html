@@ -1,0 +1,114 @@
+<form [formGroup]="userAddressForm" class="form-inline">
+  <div class="form-group">
+    <select
+      name="addressType"
+      id="addressType"
+      formControlName="addressType"
+      class="form-control m-1"
+    >
+      <option value="" disabled>Address type</option>
+      <option value="billing">Billing Address</option>
+      <option value="shipping">Shipping Address</option>
+      <option value="Home">Home Address</option>
+    </select>
+    <label for="addressType"></label>
+
+
+    <label class="m-1">
+      Address:
+      <input
+        type="text"
+        formControlName="address"
+        class="form-control"
+        required
+        minlength="2"
+      >
+    </label>
+
+    <div
+      *ngIf="userAddressForm.controls['address'].invalid
+        && (userAddressForm.controls['address'].dirty
+        || userAddressForm.controls['address'].touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="userAddressForm.controls['address'].errors.required">
+        Address is required.
+      </div>
+
+      <div *ngIf="userAddressForm.controls['address'].errors.minlength">
+        Address must be at least 2 characters long.
+      </div>
+    </div>
+
+    <label class="m-1">
+      City:
+      <input type="text" formControlName="city" class="form-control">
+    </label>
+
+    <div
+      *ngIf="userAddressForm.controls['city'].invalid
+        && (userAddressForm.controls['city'].dirty
+        || userAddressForm.controls['city'].touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="userAddressForm.controls['city'].errors.required">
+        City is required.
+      </div>
+
+      <div *ngIf="userAddressForm.controls['city'].errors.minlength">
+        City must be at least 2 characters long.
+      </div>
+    </div>
+
+    <label class="m-1">
+      Postal code:
+      <input type="tel" formControlName="postalCode" class="form-control">
+    </label>
+
+    <div
+      *ngIf="userAddressForm.controls['postalCode'].invalid
+        && (userAddressForm.controls['postalCode'].dirty
+        || userAddressForm.controls['postalCode'].touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="userAddressForm.controls['postalCode'].errors.required">
+        Postal Code is required.
+      </div>
+
+      <div *ngIf="userAddressForm.controls['postalCode'].errors.minlength">
+        Postal Code must be at least 2 characters long.
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-group m-2">
+    <button
+      class="btn btn-outline-dark"
+    >
+      Add another address
+    </button>
+
+    <button
+      class="btn btn-outline-dark"
+      (click)="addUserToList(userAddressForm.value)"
+    >
+      Add address
+    </button>
+  </div>
+
+  <button
+    class="btn btn-outline-dark"
+    (click)="addUserToList(userAddressForm.value)"
+    [routerLink]="['']"
+  >
+    Add user
+  </button>
+
+</form>
+
+<button
+  class="btn btn-outline-secondary"
+  [routerLink]="['/create']"
+>
+  Back
+</button>

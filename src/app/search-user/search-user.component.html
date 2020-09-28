@@ -1,0 +1,64 @@
+<div>
+  <button
+    *ngIf="logged === false"
+    [routerLink]="['/login']"
+    class="btn btn-danger"
+  >
+    Please login first
+  </button>
+
+  <form [formGroup]="findUserForm" *ngIf="logged">
+    <div class="form-group d-flex justify-content-between">
+      <label>
+        First Name
+        <input
+          id="firstName"
+          class="form-control"
+          type="text"
+          formControlName="firstName"
+        >
+      </label>
+
+      <label>
+        Last Name:
+        <input type="text" formControlName="lastName" class="form-control">
+      </label>
+
+      <label>
+        User Name:
+        <input type="text" formControlName="userName" class="form-control">
+      </label>
+    </div>
+
+    <div class="from-group d-flex justify-content-around">
+      <label>
+        Phone:
+        <input type="tel" formControlName="phone" class="form-control">
+      </label>
+
+      <label>
+        Email:
+        <input type="email" formControlName="email" class="form-control">
+      </label>
+    </div>
+
+    <button
+      class="btn btn-success mr-2"
+      (click)="findUser(findUserForm.value)"
+    >
+      Find user
+    </button>
+
+    <button
+      class="btn btn-warning"
+      (click)="findUserForm.reset()"
+    >
+      Clear
+    </button>
+  </form>
+</div>
+
+
+<app-user-info *ngIf="userToShow" [userInfo]="userToShow"></app-user-info>
+
+<app-user-address *ngIf="userToShow" [userAddress]="userToShow"></app-user-address>

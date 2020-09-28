@@ -1,0 +1,12 @@
+<h2>Create User Page</h2>
+
+<button
+  *ngIf="logged === false"
+  [routerLink]="['/login']"
+  class="btn btn-danger"
+>
+  Please login first
+</button>
+
+<app-add-user-info *ngIf="logged"></app-add-user-info>
+
